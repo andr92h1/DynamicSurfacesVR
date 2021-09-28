@@ -13,10 +13,13 @@ function init(bundle, parent, options = {}) {
     ...options,
   });
 
+
+  surface = r360.getDefaultSurface();
+
   // Render your app content to the default cylinder surface
   r360.renderToSurface(
     r360.createRoot('DynamicSurfacesVR', { /* initial props */ }),
-    r360.getDefaultSurface()
+    surface
   );
 
   // Load the initial environment
@@ -29,6 +32,12 @@ constructor() {
 super('surfaceModule');
 
 }
+
+changeSurfaceType(Type) {
+
+  Type === "Flat" ? surface.setShape(Surface.SurfaceShape.Flat) : surface.setShape(Surface.SurfaceShape.Cylinder);
+}
+
 }
 
 window.React360 = {init};

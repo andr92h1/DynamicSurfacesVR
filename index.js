@@ -18,11 +18,11 @@ export default class DynamicSurfacesVR extends React.Component {
           <Text>Change Dim.</Text>
         </VrButton>
 
-        <VrButton style={styles.greetingBox}>
+        <VrButton style={styles.greetingBox} onClick={() => surfaceModule.changeSurfaceType("Flat")}>
           <Text>Flat</Text>
         </VrButton>
 
-        <VrButton style={styles.greetingBox}>
+        <VrButton style={styles.greetingBox} onClick={() => surfaceModule.changeSurfaceType("Cylinder")}>
           <Text>Cylinder</Text>
         </VrButton>
 
