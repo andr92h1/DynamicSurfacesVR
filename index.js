@@ -1,11 +1,14 @@
 import React from 'react';
 import {
   AppRegistry,
+  NativeModules,
   StyleSheet,
   Text,
   View,
   VrButton
 } from 'react-360';
+
+const surfaceModule = NativeModules.surfaceModule;
 
 export default class DynamicSurfacesVR extends React.Component {
   render() {
