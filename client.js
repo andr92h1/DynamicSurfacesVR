@@ -4,7 +4,7 @@
 import {ReactInstance, Module, Surface} from 'react-360-web';
 
 function init(bundle, parent, options = {}) {
-  const r360 = new ReactInstance(bundle, parent, {
+  r360 = new ReactInstance(bundle, parent, {
     // Add custom options here
     fullScreen: true,
     nativeModules: [
@@ -13,11 +13,18 @@ function init(bundle, parent, options = {}) {
     ...options,
   });
 
+  buttonSurface=new Surface(300,300,Surface.SurfaceShape.Flat);
+  buttonSurface.setAngle(5,0);
+
+  surfacePanel=r360.renderToSurface(
+    r360.createRoot('ButtonSurface', { /* initial props */ }),
+    buttonSurface
+  );
 
   surface = r360.getDefaultSurface();
 
   // Render your app content to the default cylinder surface
-  r360.renderToSurface(
+  surfacePanel=r360.renderToSurface(
     r360.createRoot('DynamicSurfacesVR', { /* initial props */ }),
     surface
   );
@@ -37,11 +44,19 @@ changeSize(width,height){
   surface.resize(width,height);
 }
 
-
+destroyPanel(){
+  r360.detachRoot(surfacePanel);
+}
 
 changeSurfaceType(Type) {
 
   Type === "Flat" ? surface.setShape(Surface.SurfaceShape.Flat) : surface.setShape(Surface.SurfaceShape.Cylinder);
+}
+
+createPanel(){
+  r360.renderToSurface(r360.createRoot(
+    'DynamicSurfacesVR',{}),surface
+  );
 }
 
 }

@@ -10,6 +10,18 @@ import {
 
 const surfaceModule = NativeModules.surfaceModule;
 
+class ButtonSurface extends React.Component{
+  render(){
+    return(
+      <View style={styles.buttonPanel}>
+        <VrButton style={styles.greetingBox} onClick={()=>surfaceModule.createPanel()}>
+        <Text>Create Button</Text>
+        </VrButton>
+      </View>
+    )
+  }
+}
+
 export default class DynamicSurfacesVR extends React.Component {
 
   state={
@@ -44,7 +56,7 @@ export default class DynamicSurfacesVR extends React.Component {
           <Text>Reset</Text>
         </VrButton>
 
-        <VrButton style={styles.greetingBox}>
+        <VrButton style={styles.greetingBox} onClick={()=>{surfaceModule.destroyPanel()}}>
           <Text>Destroy</Text>
         </VrButton>
         
@@ -81,3 +93,4 @@ const styles = StyleSheet.create({
 });
 
 AppRegistry.registerComponent('DynamicSurfacesVR', () => DynamicSurfacesVR);
+AppRegistry.registerComponent('ButtonSurface',()=>ButtonSurface);
