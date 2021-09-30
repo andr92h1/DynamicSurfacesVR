@@ -21,7 +21,8 @@ export default class DynamicSurfacesVR extends React.Component {
     surfaceModule.changeSize(widthParam,heightParam);
   this.state.width=widthParam;
   this.state.height=heightParam;
-  this.setState({width:widthParam,width:heightParam});
+  this.setState({width:widthParam,height:heightParam});
+    
   }
 
   render() {
@@ -39,7 +40,7 @@ export default class DynamicSurfacesVR extends React.Component {
           <Text>Cylinder</Text>
         </VrButton>
 
-        <VrButton style={styles.greetingBox}>
+        <VrButton style={styles.greetingBox} onClick={()=>this.changeSurfaceDimension(1000,600)}>
           <Text>Reset</Text>
         </VrButton>
 
