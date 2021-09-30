@@ -11,10 +11,23 @@ import {
 const surfaceModule = NativeModules.surfaceModule;
 
 export default class DynamicSurfacesVR extends React.Component {
+
+  state={
+    width:1000,
+    height:600
+  }
+
+  changeSurfaceDimension(widthParam,heightParam){
+    surfaceModule.changeSize(widthParam,heightParam);
+  this.state.width=widthParam;
+  this.state.height=heightParam;
+  this.setState({width:widthParam,width:heightParam});
+  }
+
   render() {
     return (
-      <View style={styles.panel}>
-        <VrButton style={styles.greetingBox}>
+      <View style={[styles.panel,{width:this.state.width,height:this.state.height}]}>
+        <VrButton style={styles.greetingBox}onClick={()=>this.changeSurfaceDimension(500,500)}>
           <Text>Change Dim.</Text>
         </VrButton>
 
@@ -33,6 +46,7 @@ export default class DynamicSurfacesVR extends React.Component {
         <VrButton style={styles.greetingBox}>
           <Text>Destroy</Text>
         </VrButton>
+        
       </View>
     );
   }
@@ -40,8 +54,7 @@ export default class DynamicSurfacesVR extends React.Component {
 
 const styles = StyleSheet.create({
   panel: {
-    width: 1000,
-    height: 600,
+   
     backgroundColor: 'rgba(255, 255, 255, 0.4)',
     justifyContent: 'center',
     alignItems: 'center',

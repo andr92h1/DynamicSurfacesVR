@@ -33,6 +33,10 @@ super('surfaceModule');
 
 }
 
+changeSize(width,height){
+  surface.resize(width,height);
+}
+
 changeSurfaceType(Type) {
 
   Type === "Flat" ? surface.setShape(Surface.SurfaceShape.Flat) : surface.setShape(Surface.SurfaceShape.Cylinder);
