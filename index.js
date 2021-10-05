@@ -1,3 +1,5 @@
+//-------------STEP 1-----------//
+
 import React from 'react';
 import {
   AppRegistry,
@@ -9,7 +11,9 @@ import {
 } from 'react-360';
 
 const surfaceModule = NativeModules.surfaceModule;
+//-------------STEP 1 END-----------// ---> GO TO CLIENT.JS
 
+//-----------------STEP 11---------------
 class ButtonSurface extends React.Component{
   render(){
     return(
@@ -21,8 +25,10 @@ class ButtonSurface extends React.Component{
     )
   }
 }
+//-----------------STEP 11 END---------------GO BOTTOM
 
 export default class DynamicSurfacesVR extends React.Component {
+/////////----------------STEP 8--------------
 
   state={
     width:1000,
@@ -36,7 +42,9 @@ export default class DynamicSurfacesVR extends React.Component {
   this.setState({width:widthParam,height:heightParam});
     
   }
+/////////---------------------STEP 8 END----------------GO TO CLIENT.JS
 
+  ////////-----------------STEP 5----------------
   render() {
     return (
       <View style={[styles.panel,{width:this.state.width,height:this.state.height}]}>
@@ -64,6 +72,7 @@ export default class DynamicSurfacesVR extends React.Component {
     );
   }
 };
+/////////////------------STEP 5 END------------------- GO TO CLIENT.JS
 
 const styles = StyleSheet.create({
   panel: {
@@ -93,4 +102,7 @@ const styles = StyleSheet.create({
 });
 
 AppRegistry.registerComponent('DynamicSurfacesVR', () => DynamicSurfacesVR);
+
+///////////////-------------STEP 12------------------------------
 AppRegistry.registerComponent('ButtonSurface',()=>ButtonSurface);
+///////////////--------------STEP 12 END---------------------------
